@@ -1,10 +1,11 @@
-const url = 'https://v2.api.noroff.dev/blog/posts/jnettli';
+const allPosts = 'https://v2.api.noroff.dev/blog/posts/jnettli';
+const loginRequest = 'https://v2.api.noroff.dev/auth/login';
 
 getData();
 
 async function getData() {
     try {
-        const res = await fetch(url);
+        const res = await fetch(allPosts);
         if (!res.ok) {
             throw new Error("Could not fetch resource!");
         }
@@ -40,3 +41,19 @@ function displayPosts(data) {
     postImage.classList.add("postImage");
 
 }
+
+function makeLoginRequest() {
+    fetch(loginRequest,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: 
+            {
+                "email": "jonnet01270@stud.noroff.no", 
+                "password": "password"
+            }
+        })
+        .then(response => response.json());
+    }

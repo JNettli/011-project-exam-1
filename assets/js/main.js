@@ -1,7 +1,9 @@
 const allPosts = 'https://v2.api.noroff.dev/blog/posts/jnettli';
 const loginRequest = 'https://v2.api.noroff.dev/auth/login';
-
-getData();
+const postTitle = document.querySelector(".postTitle");
+const postText = document.querySelector(".postText");
+const postImage = document.querySelector(".postImage");
+const postButton = document.querySelector(".postButton");
 
 async function getData() {
     try {
@@ -9,37 +11,113 @@ async function getData() {
         if (!res.ok) {
             throw new Error("Could not fetch resource!");
         }
-    const data = await res.json();
-    console.log('Success: ', data.data);
-    console.log(data.data[0].title)
+        const data = await res.json();
+        console.log('Success: ', data.data);
+        for (let i = 0; i < data.data.length; i++) {
+            displayPosts(data.data[i]);
+        }
     } catch (error) {
         console.error('There was an error: ', error);
     }
 }
 
-function sendPost() {
-    console.log("Hello! :)");
-}
-
-function displayPosts(data) {
-    const postTitle = document.createElement("div");
-    postTitle.classList.add("postTitle");
+function displayPosts(post) {
+    const titleOfPost = document.createElement("div");
+    titleOfPost.classList.add("titleOfPost");
+    titleOfPost.innerText = post.title;
+    
     const postDiv = document.createElement("div");
-    postTitle.innerText = data.data.title;
     postDiv.classList.add("postDiv");
+    
     const postContent = document.createElement("div");
-    postContent.innerText = data.data.body;
+    postContent.innerText = post.body;
     postContent.classList.add("postContent");
+
+    const deletePost = document.createElement("img");
+    deletePost.src = "../assets/img/delete.png";
+    deletePost.alt = `Delete post!`;
+    deletePost.title = `Delete post!`;
+    deletePost.classList.add("deletePost");
+    deletePost.addEventListener("click", deletePost);
+
     const postAuthor = document.createElement("div");
     postAuthor.classList.add("postAuthor");
+    
     const postDate = document.createElement("div");
-    postDate.innerText = data.data.created;
+    postDate.innerText = post.created;
     postDate.classList.add("postDate");
-    const postImage = document.createElement("img");
-    postImage.src = `${data.data.media.url}`;
-    postImage.alt = `Beautiful post image!`;
-    postImage.classList.add("postImage");
+    
+    const postImg = document.createElement("img");
+    postImg.alt = `Beautiful post image!`;
+    postImg.classList.add("postImg");
+    if(post.media && post.media.url) {
+        postImg.src = `${post.media.url}`;
+    } else {
+        postImg.src = `https://via.placeholder.com/150`;
+    }
+    
+    postDiv.appendChild(titleOfPost);
+    postDiv.appendChild(postContent);
+    postDiv.appendChild(deletePost);
+    postDiv.appendChild(postAuthor);
+    postDiv.appendChild(postImg);
+    postDiv.appendChild(postDate);
+    
+    const postContainer = document.getElementById("content");
+    postContainer.appendChild(postDiv);
+}
 
+getData();
+
+function makePostRequest() {
+    const postTitle = document.getElementById("postTitle");
+    const postText = document.getElementById("postText");
+    const postImage = document.getElementById("postImage");
+
+    fetch(allPosts,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
+            },
+            body: 
+            JSON.stringify({
+                "title": `${postTitle.value}`, 
+                "body": `${postText.value}`,
+                "media": {
+                    "url": `${postImage.value}`
+                }
+            }),
+        })
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .then(() => location.reload())
+        .catch(error => console.log("There was an error: " + error));
+}
+
+function loginModalTime() {
+    const loginScreen = document.querySelector(".loginScreen");
+    loginScreen.classList.toggle("show");
+}
+
+function deletePost() {
+    const deletePost = document.querySelector(".deletePost");
+    deletePost.addEventListener("click", () => {
+        console.log(post.id)
+        fetch(allPosts + "/" + post.id,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
+                },
+            })
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .then(() => location.reload())
+            .catch(error => console.log("There was an error: " + error));
+    });
 }
 
 function makeLoginRequest() {
@@ -50,10 +128,13 @@ function makeLoginRequest() {
                 'Content-Type': 'application/json'
             },
             body: 
-            {
+            JSON.stringify({
                 "email": "jonnet01270@stud.noroff.no", 
                 "password": "password"
-            }
+            }),
         })
-        .then(response => response.json());
+        .then(response => response.json())
+        .then(result => localStorage.setItem("Auth Token: ", result.data.accessToken));
     }
+
+makeLoginRequest();

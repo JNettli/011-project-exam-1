@@ -9,11 +9,23 @@
 <body>
     <header>
         <nav>
+            <img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px;">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../post/index.html">Posts</a></li>
                 <li><a href="../about/index.html">About</a></li>
             </ul>
+            <div id="login" onclick="loginModalTime()"><img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px; cursor: pointer;"></div>
+            <div class="loginScreen">
+                <div class="loginModal">
+                    <span class="close" onclick="loginModalTime()">&times;</span>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    <button>Login!</button>
+                </div>
+            </div>
         </nav>
     </header>
     <div class="sorting">
@@ -28,7 +40,7 @@
         <input type="text" id="postText" name="postText" placeholder="Enter text!">
         <label for="postImage">Image</label>
         <input type="text" id="postImage" name="postImage" placeholder="Enter image URL">
-        <button onclick="sendPost()">Add new post</button>
+        <button onclick="makePostRequest()">Add new post</button>
         <div id="content"></div>
     </main>
 

@@ -33,12 +33,22 @@ function displayPosts(post) {
     postContent.innerText = post.body;
     postContent.classList.add("postContent");
 
-    const deletePost = document.createElement("img");
-    deletePost.src = "../assets/img/delete.png";
-    deletePost.alt = `Delete post!`;
+    const deletePost = document.createElement("button");
+    deletePost.innerHTML = `Delete post!`;
     deletePost.title = `Delete post!`;
     deletePost.classList.add("deletePost");
-    deletePost.addEventListener("click", deletePost);
+    deletePost.id = post.id;
+    deletePost.addEventListener("click", function deletePost(){
+        const deletePost = document.querySelector(".deletePost");
+            console.log(post.id)
+            fetch("https://v2.api.noroff.dev/blog/posts/jnettli" + "/" + deletePost.id,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
+                    }
+                })
+    });
 
     const postAuthor = document.createElement("div");
     postAuthor.classList.add("postAuthor");
@@ -100,24 +110,24 @@ function loginModalTime() {
     const loginScreen = document.querySelector(".loginScreen");
     loginScreen.classList.toggle("show");
 }
-
+/*
 function deletePost() {
     const deletePost = document.querySelector(".deletePost");
     deletePost.addEventListener("click", () => {
         console.log(post.id)
-        fetch(allPosts + "/" + post.id,
+        fetch("https://v2.api.noroff.dev/blog/posts/jnettli" + "/" + deletePost.id,
             {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
-                },
+                method: 'DELETE'
             })
             .then(response => response.json())
             .then(result => console.log(result))
             .then(() => location.reload())
             .catch(error => console.log("There was an error: " + error));
     });
+}*/
+
+function deletePost() {
+    console.log("Delete post!");
 }
 
 function makeLoginRequest() {

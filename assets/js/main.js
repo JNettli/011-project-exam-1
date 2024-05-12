@@ -110,21 +110,6 @@ function loginModalTime() {
     const loginScreen = document.querySelector(".loginScreen");
     loginScreen.classList.toggle("show");
 }
-/*
-function deletePost() {
-    const deletePost = document.querySelector(".deletePost");
-    deletePost.addEventListener("click", () => {
-        console.log(post.id)
-        fetch("https://v2.api.noroff.dev/blog/posts/jnettli" + "/" + deletePost.id,
-            {
-                method: 'DELETE'
-            })
-            .then(response => response.json())
-            .then(result => console.log(result))
-            .then(() => location.reload())
-            .catch(error => console.log("There was an error: " + error));
-    });
-}*/
 
 function deletePost() {
     console.log("Delete post!");

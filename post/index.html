@@ -15,7 +15,10 @@
                 <li><a href="../post/index.html">Posts</a></li>
                 <li><a href="../about/index.html">About</a></li>
             </ul>
-            <div id="login" onclick="loginModalTime()"><img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px; cursor: pointer;"></div>
+            <div class="inline">
+                <button id="logout">Logout!</button>
+                <div id="login" onclick="loginModalTime()"><img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px; cursor: pointer;"></div>
+            </div>
             <div class="loginScreen">
                 <div class="loginModal">
                     <span class="close" onclick="loginModalTime()">&times;</span>
@@ -23,7 +26,7 @@
                     <input type="text" id="username" name="username" placeholder="Enter username" required>
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" placeholder="Enter password" required>
-                    <button>Login!</button>
+                    <button id="loginButton">Login!</button>
                 </div>
             </div>
         </nav>

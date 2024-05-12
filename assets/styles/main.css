@@ -138,4 +138,8 @@ nav ul {
     margin: 0 0 16px 0;
 }
 
+.inline {
+    display: flex;
+    gap: 16px;
+}
 

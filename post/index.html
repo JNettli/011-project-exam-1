@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/feed.css">
     <title>Home</title>
 </head>
 <body>
@@ -31,19 +32,15 @@
             </div>
         </nav>
     </header>
-    <div class="sorting">
-        <button id="filterNewest">Newest</button>
-        <button id="filterOldest">Oldest</button>
-        <button id="filterReset">Reset filter</button>
-    </div>
     <main class="ux">
-        <label for="postTitle">Title</label>
-        <input type="text" id="postTitle" name="postTitle" placeholder="Enter post title">
-        <label for="postText">Main Text</label>
-        <input type="text" id="postText" name="postText" placeholder="Enter text!">
-        <label for="postImage">Image</label>
-        <input type="text" id="postImage" name="postImage" placeholder="Enter image URL">
-        <button onclick="makePostRequest()">Add new post</button>
+        <div class="sorting">
+            <button id="filterNewest">Newest</button>
+            <button id="filterOldest">Oldest</button>
+            <button id="filterReset">Reset filter</button>
+        </div>
+        <a href="post/edit.html" class="newPostAnchor">
+            <button class="newPost">Add New Post!</button>
+        </a>
         <div id="content"></div>
     </main>
 
@@ -51,5 +48,6 @@
         <p>&copy; 2024</p>
     </footer>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/posts.js"></script>
 </body>
 </html>

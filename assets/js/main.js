@@ -52,6 +52,7 @@ function displayPosts(post) {
                         "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
                     }
                 })
+                .then(() => location.reload())
     });
 
     const editPost = document.createElement("button");
@@ -88,18 +89,25 @@ function displayPosts(post) {
     postDate.classList.add("postDate");
     
     const postImg = document.createElement("img");
-    postImg.alt = `Beautiful post image!`;
+    postImg.alt = `${post.media.alt}`;
     postImg.classList.add("postImg");
     if(post.media && post.media.url) {
         postImg.src = `${post.media.url}`;
     } else {
         postImg.src = `https://via.placeholder.com/150`;
     }
+
+    const headerDiv = document.createElement("div");
+    headerDiv.classList.add("headerDiv");
+    const customizeDiv = document.createElement("div");
+    customizeDiv.classList.add("customizeDiv");
     
-    postDiv.appendChild(titleOfPost);
+    postDiv.appendChild(headerDiv);
+    headerDiv.appendChild(titleOfPost);
+    headerDiv.appendChild(customizeDiv);
+    customizeDiv.appendChild(deletePost);
+    customizeDiv.appendChild(editPost);
     postDiv.appendChild(postContent);
-    postDiv.appendChild(deletePost);
-    postDiv.appendChild(editPost);
     postDiv.appendChild(postAuthor);
     postDiv.appendChild(postImg);
     postDiv.appendChild(postDate);
@@ -146,10 +154,6 @@ logoutButton.addEventListener("click", function() {
     localStorage.clear();
     location.reload();
 });
-
-function deletePost() {
-    console.log("Delete post!");
-}
 
 loginButton.addEventListener("click", function() {
     fetch(loginRequest, {

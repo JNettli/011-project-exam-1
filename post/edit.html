@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/main.css">
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px;">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../post/index.html">Posts</a></li>
+                <li><a href="../about/index.html">About</a></li>
+            </ul>
+            <div class="inline">
+                <button id="logout">Logout!</button>
+                <div id="login" onclick="loginModalTime()"><img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px; cursor: pointer;"></div>
+            </div>
+            <div class="loginScreen">
+                <div class="loginModal">
+                    <span class="close" onclick="loginModalTime()">&times;</span>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    <button id="loginButton">Login!</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="sorting">
+        <button id="filterNewest">Newest</button>
+        <button id="filterOldest">Oldest</button>
+        <button id="filterReset">Reset filter</button>
+    </div>
+    <main class="ux">
+        <div id="postCreator">
+            <label for="postTitle">Title</label>
+            <input type="text" id="postTitle" name="postTitle" placeholder="Enter post title" required>
+            <label for="postText">Main Text</label>
+            <input type="text" id="postText" name="postText" placeholder="Enter text!" required>
+            <label for="postImage">Image</label>
+            <input type="text" id="postImage" name="postImage" placeholder="Enter image URL" required>
+            <input type="submit" onclick="makePostRequest()">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+    <script src="../assets/js/edit.js"></script>
+</body>
+</html>

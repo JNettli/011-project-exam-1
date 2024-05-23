@@ -64,6 +64,8 @@ async function getImages() {
         track.appendChild(slide3);
         slide3.appendChild(img3);
 
+        // https://www.youtube.com/watch?v=gBzsE0oieio for help with carousel
+
         const dotsNav = document.querySelector(".carouselNav");
         const dots = Array.from(dotsNav.children);
         const slides = Array.from(track.children);

@@ -16,19 +16,11 @@
                 <li><a href="../post/index.html">Posts</a></li>
                 <li><a href="../about/index.html">About</a></li>
             </ul>
-            <div class="inline">
-                <button id="logout">Logout!</button>
-                <div id="login" onclick="loginModalTime()"><img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px; cursor: pointer;"></div>
-            </div>
-            <div class="loginScreen">
-                <div class="loginModal">
-                    <span class="close" onclick="loginModalTime()">&times;</span>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter username" required>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter password" required>
-                    <button id="loginButton">Login!</button>
-                </div>
+            <div class="loginOutDiv">
+                <button id="logoutButton" class="hidden">Logout!</button>
+                <a href="../account/login.html">
+                    <button id="loginButtonLink" class="goToLogin hidden">Click Here to log in!</button>
+                </a>
             </div>
         </nav>
     </header>
@@ -47,7 +39,6 @@
     <footer>
         <p>&copy; 2024</p>
     </footer>
-    <script src="../assets/js/main.js"></script>
     <script src="../assets/js/posts.js"></script>
 </body>
 </html>

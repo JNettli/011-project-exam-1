@@ -5,22 +5,29 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+}
+
+footer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 32px;
+    padding: 32px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
 }
 
 header {
     width: 100%;
-    background-color: #007bff;
-    color: white;
+    color: black;
     padding: 16px 0;
     text-align: center;
 }
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -33,7 +40,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: white;
+    color: black;
     transition: .3s;
     text-decoration: none;
     cursor: pointer;
@@ -41,89 +48,49 @@ nav ul li a {
 
 nav ul li a:hover {
     transition: .3s;
-    color: #ffa9a9;
-}
-
-#login {
-    z-index: 2;
-}
-
-.loginScreen {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.loginModal {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    z-index: 2;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    color: black;
-    padding: 150px 100px;
-    border-radius: 8px;
-}
-
-.close {
-    position: absolute;
-    right: 16px;
-    top: 0px;
-    font-size: 4rem;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.close:hover {
-    color: red;
-    transition: .3s;
-}
-
-.loginModal label {
-    font-size: 1.5rem;
-    margin: 0 0 8px 0;
-}
-
-.loginModal input {
-    font-size: 1.5rem;
-    margin: 0 0 16px 0;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.loginModal button {
-    font-size: 1.5rem;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
+    color: #696969;
 }
 
 .show {
     display: block;
 }
 
-.ux {
+.sorting {
     display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    margin-top: 48px;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px auto;
+}
+
+.sorting button {
+    font-size: 1.3rem;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.sorting button:hover {
+    background-color: #0056b3;
+    transition: .3s;
+}
+
+.ux {
+    margin: 48px auto;
+    max-width: 70%;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 #postTitle {
-    width: 400px;
     margin: 0 0 16px 0;
 }
 
@@ -139,14 +106,23 @@ nav ul li a:hover {
 }
 
 .postDiv {
-    display: flex;
-    flex-direction: column;
-    margin: 0 0 32px 0;
+    width: 250px;
+    margin: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
     margin: 8px;
     padding: 16px;
-    width: 500px;
+    transition: .3s;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.postDiv:hover {
+    background-color: #efefef;
+    box-shadow: 0 0 8px 0 #ccc;
+    transition: .3s;
 }
 
 .postDiv img {
@@ -184,12 +160,17 @@ nav ul li a:hover {
     margin: 0 0 16px 0;
 }
 
-.inline {
+.loginOutDiv {
     display: flex;
+    flex-direction: column;
     gap: 16px;
 }
 
 #postCreator {
     display: none;
     flex-direction: column;
+}
+
+.hidden {
+    display: none;
 }

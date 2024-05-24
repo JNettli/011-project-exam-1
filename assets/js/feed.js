@@ -1,17 +1,15 @@
-const allPosts = 'https://v2.api.noroff.dev/blog/posts/jnettli';
-const loginRequest = 'https://v2.api.noroff.dev/auth/login';
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
-const logoutButton = document.getElementById("logout");
 const postTitle = document.querySelector(".postTitle");
 const postText = document.querySelector(".postText");
 const postImage = document.querySelector(".postImage");
 const postButton = document.querySelector(".postButton");
 const nextButton = document.querySelector(".next");
 const prevButton = document.querySelector(".prev");
+let page = 1;
+const postsPerPage = 12;
 
 async function getData() {
+    const skip = (page - 1) * postsPerPage;
+    const allPosts = `https://v2.api.noroff.dev/blog/posts/jnettli?limit=${postsPerPage}&skip=${skip}`;
     try {
         const res = await fetch(allPosts);
         if (!res.ok) {
@@ -27,9 +25,10 @@ async function getData() {
     }
 }
 
-async function getImages() {
+async function imageCarousel() {
+    const postImages = `https://v2.api.noroff.dev/blog/posts/jnettli`;
     try {
-        const res = await fetch(allPosts);
+        const res = await fetch(postImages);
         if (!res.ok) {
             throw new Error("Could not fetch resource!");
         }
@@ -143,68 +142,18 @@ async function getImages() {
     }
 }
 
-function displayPosts(post) {
-    const titleOfPost = document.createElement("div");
-    titleOfPost.classList.add("titleOfPost");
-    titleOfPost.innerText = post.title;
-    
-    const postDiv = document.createElement("div");
+function displayPosts(post) {    
+    const postDiv = document.createElement("a");
     postDiv.classList.add("postDiv");
-    
-    const postContent = document.createElement("div");
-    postContent.innerText = post.body;
-    postContent.classList.add("postContent");
+    postDiv.onclick = function() {
+        localStorage.setItem("PostID", post.id);
+    }
+    postDiv.href = `/post/post.html?id=${post.id}`;
 
-    const deletePost = document.createElement("button");
-    deletePost.innerHTML = `Delete post!`;
-    deletePost.title = `Delete post!`;
-    deletePost.classList.add("deletePost");
-    deletePost.id = post.id;
-    deletePost.addEventListener("click", function deletePost(){
-        const deletePost = document.querySelector(".deletePost");
-            console.log(post.id)
-            fetch(allPosts + "/" + deletePost.id,
-                {
-                    method: 'DELETE',
-                    headers: {
-                        "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
-                    }
-                })
-                .then(() => location.reload())
-    });
 
-    const editPost = document.createElement("button");
-    editPost.innerHTML = `Edit!`;
-    editPost.title = `Edit post!`;
-    editPost.classList.add("editPost");
-    editPost.id = post.id;
-    editPost.addEventListener("click", function editPost(){
-        const editPost = document.querySelector(".editPost");
-        console.log(post.id)
-        fetch(allPosts + "/" + editPost.id,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`,
-                },
-                body: 
-                JSON.stringify({
-                    "title": `${postTitle.value}`,
-                    "body": `${postText.value}`,
-                    "media": {
-                        "url": `${postImage.value}`
-                    }
-                }),
-            })
-    });
-
-    const postAuthor = document.createElement("div");
-    postAuthor.classList.add("postAuthor");
-    
-    const postDate = document.createElement("div");
-    postDate.innerText = post.created;
-    postDate.classList.add("postDate");
+    const postTitle = document.createElement("div");
+    postTitle.classList.add("postTitle");
+    postTitle.innerText = post.title;
     
     const postImg = document.createElement("img");
     postImg.alt = `${post.media.alt}`;
@@ -212,39 +161,31 @@ function displayPosts(post) {
     if(post.media && post.media.url) {
         postImg.src = `${post.media.url}`;
     } else {
-        postImg.src = `https://via.placeholder.com/150`;
+        postImg.src = "../assets/images/martin.png";
     }
-
-    const headerDiv = document.createElement("div");
-    headerDiv.classList.add("headerDiv");
-    const customizeDiv = document.createElement("div");
-    customizeDiv.classList.add("customizeDiv");
-    
-    postDiv.appendChild(headerDiv);
-    headerDiv.appendChild(titleOfPost);
-    headerDiv.appendChild(customizeDiv);
-    customizeDiv.appendChild(deletePost);
-    customizeDiv.appendChild(editPost);
-    postDiv.appendChild(postContent);
-    postDiv.appendChild(postAuthor);
+    postDiv.appendChild(postTitle);
     postDiv.appendChild(postImg);
-    postDiv.appendChild(postDate);
     
     const postContainer = document.getElementById("content");
     postContainer.appendChild(postDiv);
 }
 
-getImages();
+imageCarousel();
 getData();
 
+logoutButton.addEventListener("click", function() {
+    localStorage.clear();
+    location.reload();
+});
+
 function loggedInCheck() {
-    if (localStorage.getItem("Logged In: ") === "true") {
-        logoutButton.style.display = "block";
-        console.log("Logged in!")
+    if (localStorage.getItem("LoggedIn") === "true") {
+        logoutButton.classList.remove("hidden");
+        console.log("Logged in!");
     } else {
-        loginButton.style.display = "block";
-        logoutButton.style.display = "none";
-        console.log("Not logged in!")
+        logoutButton.classList.add("hidden");
+        document.getElementById("loginButtonLink").classList.remove("hidden");
+        console.log("Not logged in!");
     }
 }
 

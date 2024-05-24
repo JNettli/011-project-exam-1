@@ -1,9 +1,4 @@
 const allPosts = 'https://v2.api.noroff.dev/blog/posts/jnettli';
-const loginRequest = 'https://v2.api.noroff.dev/auth/login';
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
-const logoutButton = document.getElementById("logout");
 const postTitle = document.querySelector(".postTitle");
 const postText = document.querySelector(".postText");
 const postImage = document.querySelector(".postImage");
@@ -24,7 +19,6 @@ async function getData() {
         console.error('There was an error: ', error);
     }
 }
-
 function displayPosts(post) {
     const titleOfPost = document.createElement("div");
     titleOfPost.classList.add("titleOfPost");
@@ -144,32 +138,3 @@ function makePostRequest() {
         .then(() => location.reload())
         .catch(error => console.log("There was an error: " + error));
 }
-
-function loginModalTime() {
-    const loginScreen = document.querySelector(".loginScreen");
-    loginScreen.classList.toggle("show");
-}
-
-logoutButton.addEventListener("click", function() {
-    localStorage.clear();
-    location.reload();
-});
-
-loginButton.addEventListener("click", function() {
-    fetch(loginRequest, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: 
-        JSON.stringify({
-            "email": `${username.value}`, 
-            "password": `${password.value}`
-        }),
-    })
-    .then(response => response.json())
-    .then(result => localStorage.setItem("Auth Token: ", result.data.accessToken))
-    .then(() => localStorage.setItem("Logged In: ", true))
-    .then(() => localStorage.setItem("User: ", username.value))
-    .then(() => location.reload())
-});

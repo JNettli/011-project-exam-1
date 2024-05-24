@@ -5,33 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/styles/main.css">
     <link rel="stylesheet" type="text/css" href="../assets/styles/feed.css">
-    <title>Home</title>
+    <title>Bob Loblaw's Law Blog</title>
 </head>
 <body>
     <header>
         <nav>
-            <img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px;">
+            <img src="assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw's Lawblog Logo" style="max-height: 102px; margin: -20px;">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../post/index.html">Posts</a></li>
                 <li><a href="../about/index.html">About</a></li>
             </ul>
-            <div class="inline">
-                <button id="logout">Logout!</button>
-                <div id="login" onclick="loginModalTime()"><img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px; cursor: pointer;"></div>
-            </div>
-            <div class="loginScreen">
-                <div class="loginModal">
-                    <span class="close" onclick="loginModalTime()">&times;</span>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter username" required>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter password" required>
-                    <button id="loginButton">Login!</button>
-                </div>
+            <div class="loginOutDiv">
+                <button id="logoutButton" class="hidden">Logout!</button>
+                <a href="../account/login.html">
+                    <button id="loginButtonLink" class="goToLogin hidden">Click Here to log in!</button>
+                </a>
             </div>
         </nav>
     </header>
+    <div class="topDivs">
+        <div class="info">
+            <img src="assets/img/bob-loblaw.png" alt="Bob Loblaw Portrait">
+            <h1></h1>
+        </div>
+        <div class="infoText">
+            <h1>Need an attourney?</h1>
+            <p>Look no further! Welcome to Bob Loblaw's Law Blog with Bob Loblaw: Your No-Nonsense Legal Advocate.
+                <br>Bob’s motto? “You don’t need double talk; you need Bob Loblaw.” 
+                And indeed, he delivers. Whether it’s drafting ironclad contracts for high-powered CEOs or defending white-collar criminals, Bob’s legal acumen is unmatched. 
+                His stenographer secretary, the unflappable Mildred, types away furiously as Bob dispenses advice like a sage oracle. 
+                Rumor has it that he once cross-examined a parrot in court, unraveling a complex embezzlement scheme with a series of squawks and nods.
+            </p>
+            <p>So, whether you’re facing a corporate merger or just need a cease-and-desist letter for your noisy neighbor’s yodeling practice, remember: Bob Loblaw is the name to trust. 
+            Because when it comes to legal matters, Bob doesn’t just talk the talk—he Bob Loblaws the Loblaw.</p>
+        </div>
+    </div>
+    <div class="bottomDivs">
+        <h1 class="mainHeader">Here are some of Bob's latest cases:</h1>
         <div class="carousel">
             <button class="prev hidden">&#10094</button>
             <div class="carouselTrackContainer">
@@ -44,16 +55,28 @@
                 <button class="carouselIndicator"></button>
             </div>
         </div>
+    </div>
     <main class="ux">
-        <div class="sorting">
-            <button id="filterNewest">Newest</button>
-            <button id="filterOldest">Oldest</button>
-            <button id="filterReset">Reset filter</button>
-        </div>
-        <a href="post/edit.html" class="newPostAnchor">
-            <button class="newPost">Add New Post!</button>
-        </a>
         <div id="content"></div>
+        <div class="centerer">
+            <h1>Some reviews from Bob's latest clients:</h1>
+            <div class="reviews">
+                <div class="reviewDiv">
+                    <div>
+                        <p>“You know you really are a mouthful.”</p>
+                        <p class="signed">- Dr. Tobias Onyango Fünke</p>
+                    </div>
+                    <img src="assets/img/tobias-funke.png" alt="Dr. Tobias Fünke">
+                </div>
+                <div class="reviewDiv">
+                    <div>
+                        <p>“Bob Loblaw is a legal genius. He’s so good, he could get a panda off death row.”</p>
+                        <p class="signed">- Franklin the Puppet</p>
+                    </div>
+                    <img src="assets/img/franklin.png" alt="Franklin the Puppet">
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>

@@ -13,7 +13,6 @@
     padding: 8px;
     border: none;
     border-radius: 4px;
-    background-color: #f8f9fa;
     cursor: pointer;
     transition: .3s;
     margin: 0 8px;
@@ -36,6 +35,14 @@
 
 .bottomDivs {
     margin: 0 auto;
+    box-shadow: #ccc 0 0 8px 0;
+    padding-right: 128px;
+    padding: 48px;
+    margin-top: 32px;
+    border-radius: 16px;
+    max-width: 80%;
+    min-width: 50%;
+    align-items: center;
 }
 
 .info {
@@ -60,13 +67,6 @@
 
 .infoText p {
     font-size: 1.2rem;
-}
-
-.bottomDivs {
-    padding: 48px 0;
-    max-width: 80%;
-    min-width: 50%;
-    align-items: center;
 }
 
 .mainHeader {

@@ -4,6 +4,8 @@ const postImage = document.querySelector(".postImage");
 const postButton = document.querySelector(".postButton");
 const nextButton = document.querySelector(".next");
 const prevButton = document.querySelector(".prev");
+const loginButton = document.getElementById("loginButton");
+const logoutButton = document.getElementById("logoutButton");
 let page = 1;
 const postsPerPage = 12;
 
@@ -190,7 +192,7 @@ function loggedInCheck() {
         console.log("Logged in!");
     } else {
         logoutButton.classList.add("hidden");
-        document.getElementById("loginButtonLink").classList.remove("hidden");
+        loginButton.classList.remove("hidden");
         console.log("Not logged in!");
     }
 }

@@ -28,7 +28,7 @@ header {
     color: black;
     padding: 24px 0;
     text-align: center;
-    border-bottom: #ccc 1px solid;
+    border-bottom: #9dbcff 4px solid;
     background-color: #fff;
 }
 
@@ -52,11 +52,14 @@ nav ul li a {
     transition: .3s;
     text-decoration: none;
     cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 nav ul li a:hover {
+    background-color: #007bff;
+    color: white;
     transition: .3s;
-    color: #007bff;
 }
 
 .show {
@@ -142,4 +145,22 @@ nav ul li a:hover {
 
 .hidden {
     display: none;
+}
+
+#loginButton, #logoutButton {
+    background-color: transparent;
+    color: black;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin: 8px 0;
+    transition: .3s;
+}
+
+#loginButton:hover, #logoutButton:hover {
+    background-color: #007bff;
+    color: white;
+    transition: .3s;
 }

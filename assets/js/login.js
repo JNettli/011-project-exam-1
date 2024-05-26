@@ -1,7 +1,7 @@
 const loginRequest = 'https://v2.api.noroff.dev/auth/login';
 const username = document.getElementById("username");
 const password = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
+const loginButton = document.getElementById("loginNow");
 const logoutButton = document.getElementById("logoutButton");
 
 logoutButton.addEventListener("click", function() {
@@ -39,6 +39,7 @@ function loggedInCheck() {
         document.querySelector(".loggedIn").classList.remove("hidden");
         document.getElementById("loggedInUser").innerText = localStorage.getItem("User");
     } else {
+        loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
         console.log("Not logged in!");
     }

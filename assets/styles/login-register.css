@@ -34,7 +34,7 @@ body {
     border-radius: 4px;
 }
 
-.loginContainer button {
+#loginNow, #registerButton {
     font-size: 1.5rem;
     padding: 8px;
     width: 100%;

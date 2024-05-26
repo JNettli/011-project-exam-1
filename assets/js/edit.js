@@ -1,88 +1,106 @@
-const allPosts = 'https://v2.api.noroff.dev/blog/posts/jnettli';
-const loginRequest = 'https://v2.api.noroff.dev/auth/login';
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
-const logoutButton = document.getElementById("logout");
-const postTitle = document.querySelector(".postTitle");
-const postText = document.querySelector(".postText");
-const postImage = document.querySelector(".postImage");
-const postButton = document.querySelector(".postButton");
+const getPostId = new URLSearchParams(window.location.search).get("id");
+const getAuthorName = new URLSearchParams(window.location.search).get("author");
+const authorNameLocalStorage = localStorage.getItem("authorName");
+const postUrl = `https://v2.api.noroff.dev/blog/posts/${getAuthorName}/${getPostId}`;
+const generalPost = `https://v2.api.noroff.dev/blog/posts/${authorNameLocalStorage}`;
+const saveButton = document.getElementById("overrideButton");
+const editButton = document.getElementById("editButton");
 
+const check = new URLSearchParams(window.location.search).get("id") === null;
+console.log(check);
 
-function makePostRequest() {
-    const postTitle = document.getElementById("postTitle");
-    const postText = document.getElementById("postText");
-    const postImage = document.getElementById("postImage");
+document.getElementById("checkbuton").addEventListener("click", function() {
+    const postTitle = document.getElementById("title");
+    const postText = document.getElementById("content");
+    const postImage = document.getElementById("img");
+    console.log("Title: " + postTitle.value + "Text: " + postText.value + "Image: " + postImage.value);
 
-    fetch(allPosts,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
-            },
-            body: 
-            JSON.stringify({
-                "title": `${postTitle.value}`, 
-                "body": `${postText.value}`,
-                "media": {
-                    "url": `${postImage.value}`
+});
+
+if (new URLSearchParams(window.location.search).get("id") === null) {
+    document.title = "Create a New Post - The Bob Loblaw Law Blog";
+    editButton.classList.remove("hidden");
+    document.getElementById("edit").classList.add("hidden");
+    document.getElementById("delete").classList.add("hidden");
+    editButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        const postTitle = document.getElementById("title");
+        const postText = document.getElementById("content");
+        const postImage = document.getElementById("img");
+        fetch(generalPost,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer " + `${localStorage.getItem('AuthToken')}`
+                },
+                body: JSON.stringify({
+                    title: `${postTitle.value}`, 
+                    body: `${postText.value}`,
+                    media: {
+                        url: `${postImage.value}`
+                    }
+                }),
+            })
+            .then(() => location.href = "/index.html")
+            .then(() => alert("Post created!"))
+            .catch(error => console.log("There was an error: " + error));
+    });
+} else {
+    async function getData() {
+        try {
+            const res = await fetch(postUrl);
+            if (!res.ok) {
+                throw new Error("Could not fetch resource!");
+            }
+            const data = await res.json();
+            document.title = `${data.data.title} - The Bob Loblaw Law Blog`;
+
+            const postTitleField = document.getElementById("title");
+            const postContentField = document.getElementById("content");
+            const postImageField = document.getElementById("img");
+
+            postTitleField.value = data.data.title;
+            postContentField.value = data.data.body;
+            postImageField.value = data.data.media.url;
+
+                saveButton.classList.remove("hidden");
+
+                saveButton.addEventListener("click", async function(event) {
+                event.preventDefault();
+                
+                const postTitle = postTitleField.value;
+                const postContent = postContentField.value;
+                const postImage = postImageField.value;
+                try {
+                    const response = await fetch(postUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "Authorization": "Bearer " + `${localStorage.getItem('AuthToken')}`,
+                        },
+                        body: JSON.stringify({
+                            "title": postTitle,
+                            "body": postContent,
+                            "media": {
+                                "url": postImage
+                            }
+                        }),
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    } else {
+                        location.href = `/post/post.html?id=${getPostId}&author=${getAuthorName}`;
+                        alert("Post updated!");
+                    }
+                } catch (error) {
+                    console.error("There was an error: ", error);
                 }
-            }),
-        })
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .then(() => location.reload())
-        .catch(error => console.log("There was an error: " + error));
-}
-
-function loginModalTime() {
-    const loginScreen = document.querySelector(".loginScreen");
-    loginScreen.classList.toggle("show");
-}
-
-logoutButton.addEventListener("click", function() {
-    localStorage.clear();
-    location.reload();
-});
-
-function deletePost() {
-    console.log("Delete post!");
-}
-
-loginButton.addEventListener("click", function() {
-    fetch(loginRequest, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: 
-        JSON.stringify({
-            "email": `${username.value}`, 
-            "password": `${password.value}`
-        }),
-    })
-    .then(response => response.json())
-    .then(result => localStorage.setItem("Auth Token: ", result.data.accessToken))
-    .then(() => localStorage.setItem("Logged In: ", true))
-    .then(() => localStorage.setItem("User: ", username.value))
-    .then(() => location.reload())
-});
-
-function loggedInCheck() {
-    if (localStorage.getItem("Logged In: ") === "true") {
-        const postCreator = document.getElementById("postCreator");
-        const newPostAnchor = document.querySelector(".newPostAnchor");
-        postCreator.style.display = "flex";
-        logoutButton.style.display = "block";
-        console.log("Logged in!")
-    } else {
-        newPostAnchor.style.display = "none";
-        loginButton.style.display = "block";
-        logoutButton.style.display = "none";
-        console.log("Not logged in!")
+            });
+        } catch (error) {
+            console.error("There was an error: ", error);
+        }
     }
+    getData();
 }
 
-loggedInCheck();

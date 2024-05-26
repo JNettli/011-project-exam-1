@@ -22,10 +22,13 @@ loginButton.addEventListener("click", function() {
         }),
     })
     .then(response => response.json())
-    .then(result => localStorage.setItem("AuthToken", result.data.accessToken))
-    .then(() => localStorage.setItem("LoggedIn", true))
-    .then(() => localStorage.setItem("User", username.value))
-    .then(() => location.reload())
+    .then(result => {
+        localStorage.setItem("AuthToken", result.data.accessToken);
+        localStorage.setItem("authorName", result.data.name);
+        localStorage.setItem("LoggedIn", true);
+        localStorage.setItem("User", username.value);
+        location.reload();
+    });
 });
 
 function loggedInCheck() {

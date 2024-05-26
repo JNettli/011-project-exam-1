@@ -39,50 +39,6 @@ function displayPosts(post) {
     postContent.innerText = post.body;
     postContent.classList.add("postContent");
 
-    const deletePost = document.createElement("button");
-    deletePost.innerHTML = `Delete post!`;
-    deletePost.title = `Delete post!`;
-    deletePost.classList.add("deletePost");
-    deletePost.id = post.id;
-    deletePost.addEventListener("click", function deletePost(){
-        const deletePost = document.querySelector(".deletePost");
-            console.log(post.id)
-            fetch(allPosts + "/" + deletePost.id,
-                {
-                    method: 'DELETE',
-                    headers: {
-                        "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`
-                    }
-                })
-                .then(() => location.reload())
-    });
-
-    const editPost = document.createElement("button");
-    editPost.innerHTML = `Edit!`;
-    editPost.title = `Edit post!`;
-    editPost.classList.add("editPost");
-    editPost.id = post.id;
-    editPost.addEventListener("click", function editPost(){
-        const editPost = document.querySelector(".editPost");
-        console.log(post.id)
-        fetch(allPosts + "/" + editPost.id,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": "Bearer " + `${localStorage.getItem('Auth Token: ')}`,
-                },
-                body: 
-                JSON.stringify({
-                    "title": `${postTitle.value}`,
-                    "body": `${postText.value}`,
-                    "media": {
-                        "url": `${postImage.value}`
-                    }
-                }),
-            })
-    });
-
     const postAuthor = document.createElement("div");
     postAuthor.classList.add("postAuthor");
     postAuthor.innerText = `${post.author.name}, ${post.author.email}`;
@@ -108,8 +64,6 @@ function displayPosts(post) {
     postDiv.appendChild(headerDiv);
     headerDiv.appendChild(titleOfPost);
     headerDiv.appendChild(customizeDiv);
-    customizeDiv.appendChild(deletePost);
-    customizeDiv.appendChild(editPost);
     postDiv.appendChild(postContent);
     postDiv.appendChild(postAuthor);
     postDiv.appendChild(postImg);

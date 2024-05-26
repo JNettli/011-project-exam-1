@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/styles/main.css">
-    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/singlePost.css">
+    <title></title>
 </head>
 <body>
     <header>
         <nav>
-            <img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px;">
+            <a href="../index.html">
+                <img src="../assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw's Lawblog Logo" style="max-width: 260px; margin: -20px;">
+            </a>
             <ul>
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../post/index.html">Posts</a></li>
-                <li><a href="../about/index.html">About</a></li>
+                <li><a href="../post/index.html">All Cases</a></li>
             </ul>
             <div class="loginOutDiv">
                 <button id="logoutButton" class="hidden">Logout!</button>
-                <a href="../account/login.html">
-                    <button id="loginButtonLink" class="goToLogin hidden">Click Here to log in!</button>
-                </a>
             </div>
         </nav>
     </header>
-    <div class="sorting">
-        <button id="filterNewest">Newest</button>
-        <button id="filterOldest">Oldest</button>
-        <button id="filterReset">Reset filter</button>
-    </div>
-    <main class="ux">
-        <div id="postCreator">
-            <label for="postTitle">Title</label>
-            <input type="text" id="postTitle" name="postTitle" placeholder="Enter post title" required>
-            <label for="postText">Main Text</label>
-            <input type="text" id="postText" name="postText" placeholder="Enter text!" required>
-            <label for="postImage">Image</label>
-            <input type="text" id="postImage" name="postImage" placeholder="Enter image URL" required>
-            <input type="submit" onclick="makePostRequest()">
+    <main>
+        <div id="creatorStuff">
+            <button id="edit">Edit Post</button>
+            <button id="delete">Delete Post</button>
+        </div>
+        <div id="postContent">
+            <form class="centerer">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter title" required>
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" placeholder="Enter content" required></textarea>
+                <label for="img">Image:</label>
+                <input type="text" id="img" name="img" placeholder="Enter image URL" required>
+                <input type="submit" value="Save Post!" id="overrideButton" class="hidden">
+            </form>
+            <input type="submit" value="Create Post!" id="editButton" class="hidden">
+            <button id="checkbuton">Clik</button>
         </div>
     </main>
-
+        
     <footer>
         <p>&copy; 2024</p>
     </footer>

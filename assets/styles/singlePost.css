@@ -1,21 +1,35 @@
-.centerer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 #creatorStuff {
     float: right;
+    margin: 8px;
 }
 
 #creatorStuff button {
-    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 32px;
+    padding: 8px 16px;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+#edit {
+    background-color: #007bff;
+    transition: .3s;
+}
+
+#edit:hover {
+    background-color: #509ff3;
+    transition: .3s;
+}
+
+#delete {
+    background-color: #dc3545;
+    transition: .3s;
+}
+
+#delete:hover {
+    background-color: #91121f;
+    transition: .3s;
 }
 
 #postContent {
@@ -36,4 +50,51 @@
     flex-direction: column;
     align-items: flex-start;
     margin: 32px;
+}
+
+.centerer {
+    display: flex;
+    flex-direction: column;
+}
+
+form textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+form input[type="submit"] {
+    font-size: 1.4rem;
+    width: 50%;
+    margin: 32px auto;
+    font-weight: bold;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+#editButton {
+    background-color: #007bff;
+    transition: .3s;
+}
+
+#editButton:hover {
+    background-color: #509ff3;
+    transition: .3s;
+}
+
+#overrideButton {
+    background-color: #2be412;
+    color: black;
+    transition: .3s;
+}
+
+#overrideButton:hover {
+    background-color: #1b9a0b;
+    transition: .3s;
 }

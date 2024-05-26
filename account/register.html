@@ -10,7 +10,7 @@
 <body>
     <header>
         <nav>
-            <img src="https://static-00.iconduck.com/assets.00/placeholder-icon-2048x2048-48kucnce.png" alt="logoimg" style="max-height: 32px; max-width: 32px;">
+            <img src="../assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw's Lawblog Logo" style="max-width: 260px; margin: -20px;">
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../post/index.html">Posts</a></li>
@@ -25,19 +25,24 @@
         </nav>
     </header>
     <main>
-        <div class="registrationForm">
-            <h1>Thank you for wanting to create an account with us!</h1>
-            <h2>We just need some information to create your account!</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter email" required>
-            <button id="registerButton">Register!</button>
-            <p>Already registered? <a href="../account/login.html">Click here to login!</a></p>
+        <div class="centerer">
+            <h1 style="text-align: center;">Thank you for wanting to create an account with us!</h1>
+            <h2 style="text-align: center;">We just need some information to create your account!</h2>
+                <form class="loginContainer">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter email" required>
+                    <input type="submit" value="Register!" id="registerButton">
+                </form>
+            <p style="text-align: center;">Already registered? <a href="../account/login.html">Click here to login!</a></p>
         </div>
     </main>
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
     <script src="assets/js/main.js"></script>
     <script src="../assets/js/login.js"></script>
 </body>

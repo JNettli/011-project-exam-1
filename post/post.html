@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/singlePost.css">
+    <title></title>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="../assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw's Lawblog Logo" style="max-width: 260px; margin: -20px;">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../post/index.html">Posts</a></li>
+                <li><a href="../about/index.html">About</a></li>
+            </ul>
+            <div class="loginOutDiv">
+                <button id="logoutButton" class="hidden">Logout!</button>
+                <a href="../account/login.html">
+                    <button id="loginButtonLink" class="goToLogin hidden">Click Here to log in!</button>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="centerer">
+        <div id="creatorStuff">
+            <button id="delete">Delete this Post</button>
+        </div>
+        <div id="postContent"></div>
+    </main>
+        
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+    <script src="../assets/js/post.js"></script>
+</body>
+</html>

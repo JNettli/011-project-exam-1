@@ -21,8 +21,9 @@ footer {
 header {
     width: 100%;
     color: black;
-    padding: 16px 0;
+    padding: 24px 0;
     text-align: center;
+    border-bottom: #ccc 1px solid;
 }
 
 nav {
@@ -37,6 +38,7 @@ nav ul {
     gap: 2rem;
     font-size: 1.3rem;
     font-weight: bold;
+    padding: 0;
 }
 
 nav ul li a {
@@ -53,29 +55,6 @@ nav ul li a:hover {
 
 .show {
     display: block;
-}
-
-.sorting {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin: 16px auto;
-}
-
-.sorting button {
-    font-size: 1.3rem;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.sorting button:hover {
-    background-color: #0056b3;
-    transition: .3s;
 }
 
 .ux {
@@ -163,7 +142,8 @@ nav ul li a:hover {
 .loginOutDiv {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    width: 260px;
+    align-items: end;
 }
 
 #postCreator {

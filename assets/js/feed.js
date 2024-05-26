@@ -39,29 +39,38 @@ async function imageCarousel() {
 
         const track = document.querySelector(".slides");
         const slide1 = document.createElement("li");
+        const imgLink1 = document.createElement("a");
         const img1 = document.createElement("img");
         img1.classList.add("carouselImage");
         slide1.classList.add("carouselSlide");
         slide1.classList.add("currentSlide");
+        imgLink1.href = "/post/post.html?id=" + data.data[0].id + "&author=" + data.data[0].author.name;
         img1.src = firstImg;
         track.appendChild(slide1);
-        slide1.appendChild(img1);
+        slide1.appendChild(imgLink1);
+        imgLink1.appendChild(img1);
         
         const slide2 = document.createElement("li");
+        const imgLink2 = document.createElement("a");
         const img2 = document.createElement("img");
         img2.classList.add("carouselImage");
         slide2.classList.add("carouselSlide");
         img2.src = secondImg;
+        imgLink2.href = "/post/post.html?id=" + data.data[1].id + "&author=" + data.data[1].author.name;
         track.appendChild(slide2);
-        slide2.appendChild(img2);
+        slide2.appendChild(imgLink2);
+        imgLink2.appendChild(img2);
         
         const slide3 = document.createElement("li");
+        const imgLink3 = document.createElement("a");
         const img3 = document.createElement("img");
         img3.classList.add("carouselImage");
         slide3.classList.add("carouselSlide");
         img3.src = thirdImg;
+        imgLink3.href = "/post/post.html?id=" + data.data[2].id + "&author=" + data.data[2].author.name;
         track.appendChild(slide3);
-        slide3.appendChild(img3);
+        slide3.appendChild(imgLink3);
+        imgLink3.appendChild(img3);
 
         const dotsNav = document.querySelector(".carouselNav");
         const dots = Array.from(dotsNav.children);
@@ -145,10 +154,7 @@ async function imageCarousel() {
 function displayPosts(post) {    
     const postDiv = document.createElement("a");
     postDiv.classList.add("postDiv");
-    postDiv.onclick = function() {
-        localStorage.setItem("PostID", post.id);
-    }
-    postDiv.href = `/post/post.html?id=${post.id}`;
+    postDiv.href = `/post/post.html?id=${post.id}/&author=${post.author.name}`;
 
 
     const postTitle = document.createElement("div");

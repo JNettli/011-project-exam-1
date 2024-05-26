@@ -22,14 +22,14 @@
         </nav>
     </header>
     <main class="centerer">
-        <div class="loginContainer">
+        <form class="loginContainer">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter username" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" placeholder="Enter password" required>
-                <button id="loginButton">Login!</button>
+                <input type="button" value="Login!" id="loginButton">
                 <p>Not registered? <a href="../account/register.html">Click here to register!</a></p>
-        </div>
+        </form>
         <div class="loggedIn hidden">
             <h1>Logged in as <span id="loggedInUser"></span>!</h1>
             <h2>Welcome!</h2>

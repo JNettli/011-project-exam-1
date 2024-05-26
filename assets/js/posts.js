@@ -5,6 +5,7 @@ const postImage = document.querySelector(".postImage");
 const postButton = document.querySelector(".postButton");
 const newPostAnchor = document.querySelector(".newPostAnchor");
 const loginButton = document.getElementById("loginButtonLink");
+const deletePost = document.querySelector(".deletePost");
 let page = 1;
 const postsPerPage = 12;
 
@@ -131,11 +132,13 @@ function loggedInCheck() {
         newPostAnchor.style.display = "block";
         loginButton.classList.add("hidden");
         logoutButton.classList.remove("hidden");
+        deletePost.classList.remove("hidden");
         console.log("Logged in!")
     } else {
         newPostAnchor.style.display = "none";
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
+        deletePost.classList.add("hidden");
         console.log("Not logged in!")
     }
 }

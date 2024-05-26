@@ -1,0 +1,39 @@
+.centerer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#creatorStuff {
+    float: right;
+}
+
+#creatorStuff button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 32px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#postContent {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 32px;
+    min-height: 420px;
+}
+
+.upperDiv {
+    float: right;
+}
+
+.mainText {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 32px;
+}

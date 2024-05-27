@@ -2,10 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 16px auto;
-    padding: 32px;
-    background-color: #007bff;
-    color: white;
+    margin: 0 auto -32px auto;
 }
 
 .sorting button {
@@ -16,6 +13,8 @@
     cursor: pointer;
     transition: .3s;
     margin: 0 8px;
+    background-color: #007bff;
+    color: white;
 }
 
 .sorting button:hover {
@@ -166,6 +165,8 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
+    width: 320px;
+    text-align: center;
     background-color: #007bff;
     text-decoration: none;
     cursor: pointer;
@@ -216,4 +217,65 @@
     height: 180px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.sorting h1 {
+    text-align: center;
+}
+
+.postDivPublic {
+    width: 40%;
+    min-width: 600px;
+    height: fit-content;
+    min-height: 300px;
+    border: 1px solid #696969;
+    border-radius: 8px;
+    padding: 16px;
+    transition: .3s;
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    background-color: #fff;
+}
+
+.postDivPublic:hover {
+    box-shadow: #ccc 0 0 8px 0;
+    background-color: #f1f1f1;
+    transition: .3s;
+}
+
+.postDivPublic .postImg {
+    max-width: 250px;
+    max-height: 250px;
+    float: right;
+    margin: 0 0 8px 8px;
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 16px auto;
+    flex-wrap: wrap;
+}
+
+#pagination button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+    background-color: #007bff;
+    color: white;
+    transition: .3s;
+}
+
+#pagination button:hover {
+    background-color: #0056b3;
+    transition: .3s;
 }

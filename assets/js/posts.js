@@ -6,22 +6,23 @@ const postButton = document.querySelector(".postButton");
 const newPostAnchor = document.querySelector(".newPostAnchor");
 const loginButton = document.getElementById("loginButtonLink");
 const deletePost = document.querySelector(".deletePost");
-let page = 1;
-const postsPerPage = 12;
+const newest = document.getElementById("filterNewest");
+const oldest = document.getElementById("filterOldest");
 
-async function getData() {
-    const skip = (page - 1) * postsPerPage;
-    const allPosts = `https://v2.api.noroff.dev/blog/posts/jnettli?limit=${postsPerPage}&skip=${skip}`;
+let allPostsData = [];
+
+async function fetchAllPosts() {
     try {
         const res = await fetch(allPosts);
         if (!res.ok) {
             throw new Error("Could not fetch resource!");
         }
         const data = await res.json();
-        console.log('Success: ', data.data);
-        for (let i = 0; i < data.data.length; i++) {
+        allPostsData = data.data;
+        /*for (let i = 0; i < data.data.length; i++) {
             displayPosts(data.data[i]);
-        }
+        }*/
+        return data.data;
     } catch (error) {
         console.error('There was an error: ', error);
     }
@@ -32,8 +33,9 @@ function displayPosts(post) {
     titleOfPost.classList.add("titleOfPost");
     titleOfPost.innerText = post.title;
     
-    const postDiv = document.createElement("div");
-    postDiv.classList.add("postDiv");
+    const postDiv = document.createElement("a");
+    postDiv.classList.add("postDivPublic");
+    postDiv.href = `/post/post.html?id=${post.id}/&author=${post.author.name}`;
     
     const postContent = document.createElement("div");
     postContent.innerText = post.body;
@@ -58,22 +60,71 @@ function displayPosts(post) {
 
     const headerDiv = document.createElement("div");
     headerDiv.classList.add("headerDiv");
-    const customizeDiv = document.createElement("div");
-    customizeDiv.classList.add("customizeDiv");
     
+    postDiv.appendChild(postImg);
     postDiv.appendChild(headerDiv);
     headerDiv.appendChild(titleOfPost);
-    headerDiv.appendChild(customizeDiv);
-    postDiv.appendChild(postContent);
     postDiv.appendChild(postAuthor);
-    postDiv.appendChild(postImg);
     postDiv.appendChild(postDate);
     
     const postContainer = document.getElementById("content");
     postContainer.appendChild(postDiv);
 }
 
-getData();
+function displayLimitedPosts(page = 1, postsPerPage = 12) {
+    const skip = (page - 1) * postsPerPage;
+    const limitedPosts = allPostsData.slice(skip, skip + postsPerPage);
+    for (let i = 0; i < limitedPosts.length; i++) {
+        displayPosts(limitedPosts[i]);
+    }
+    createPagination(allPostsData.length, postsPerPage);
+}
+
+newest.addEventListener("click", function() {
+    filterNewestOldest("newest");
+});
+
+oldest.addEventListener("click", function() {
+    filterNewestOldest("oldest");
+});
+
+async function filterNewestOldest(timeCreated, page = 1, postsPerPage = 12) {
+    let filteredResults = [];
+
+    if (timeCreated === "newest") {
+        filteredResults = allPostsData.sort((a, b) => new Date(b.created) - new Date(a.created));
+    } else if (timeCreated === "oldest") {
+        filteredResults = allPostsData.sort((a, b) => new Date(a.created) - new Date(b.created));
+    }
+
+    const skip = (page - 1) * postsPerPage;
+    const limitedPosts = filteredResults.slice(skip, skip + postsPerPage);
+
+    content.innerHTML = "";
+    for (const post of limitedPosts) {
+        displayPosts(post);
+    }
+}
+document.addEventListener("DOMContentLoaded", function() {
+    fetchAllPosts().then(() => {
+        displayLimitedPosts();
+    });
+});
+
+function createPagination(totalPosts, postsPerPage) {
+    const totalPages = Math.ceil(totalPosts / postsPerPage);
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement("button");
+        pageButton.innerText = i;
+        pageButton.addEventListener("click", function() {
+            content.innerHTML = "";
+            displayLimitedPosts(i);
+        });
+        pagination.appendChild(pageButton);
+    }
+}
 
 logoutButton.addEventListener("click", function() {
     localStorage.clear();
@@ -86,13 +137,11 @@ function loggedInCheck() {
         newPostAnchor.style.display = "block";
         loginButton.classList.add("hidden");
         logoutButton.classList.remove("hidden");
-        deletePost.classList.remove("hidden");
         console.log("Logged in!")
     } else {
         newPostAnchor.style.display = "none";
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
-        deletePost.classList.add("hidden");
         console.log("Not logged in!")
     }
 }

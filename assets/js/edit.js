@@ -5,17 +5,7 @@ const postUrl = `https://v2.api.noroff.dev/blog/posts/${getAuthorName}/${getPost
 const generalPost = `https://v2.api.noroff.dev/blog/posts/${authorNameLocalStorage}`;
 const saveButton = document.getElementById("overrideButton");
 const editButton = document.getElementById("editButton");
-
 const check = new URLSearchParams(window.location.search).get("id") === null;
-console.log(check);
-
-document.getElementById("checkbuton").addEventListener("click", function() {
-    const postTitle = document.getElementById("title");
-    const postText = document.getElementById("content");
-    const postImage = document.getElementById("img");
-    console.log("Title: " + postTitle.value + "Text: " + postText.value + "Image: " + postImage.value);
-
-});
 
 if (new URLSearchParams(window.location.search).get("id") === null) {
     document.title = "Create a New Post - The Bob Loblaw Law Blog";

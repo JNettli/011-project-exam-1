@@ -1,4 +1,4 @@
-const loginButton = document.getElementById("loginButtonLink");
+const loginButton = document.getElementById("loginNow");
 const logoutButton = document.getElementById("logoutButton");
 const getPostId = new URLSearchParams(window.location.search).get('id');
 const getAuthorName = new URLSearchParams(window.location.search).get('author');

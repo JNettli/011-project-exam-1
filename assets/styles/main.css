@@ -15,12 +15,34 @@ main {
 }
 
 footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     min-height: 50px;
     width: 100%;
     padding: 32px;
-    background-color: #007bff;
-    color: white;
+    border-top: 4px solid #007bff;
     text-align: center;
+}
+
+.footerRight {
+    display: flex;
+    font-size: 1.3rem;
+    text-align: right
+}
+
+.footerRight a {
+    color: black;
+    text-decoration: underline;
+}
+
+.footerRight a:hover {
+    color: #007bff;
+}
+
+.footerRight ul {
+    margin: 0;
+    list-style-type: none;
 }
 
 header {
@@ -68,7 +90,7 @@ nav ul li a:hover {
 
 .ux {
     margin: 48px auto;
-    max-width: 70%;
+    max-width: 80%;
 }
 
 #content {
@@ -147,7 +169,7 @@ nav ul li a:hover {
     display: none;
 }
 
-#loginButton, #logoutButton {
+#loginNow, #loginButton, #logoutButton {
     background-color: transparent;
     color: black;
     padding: 8px;
@@ -159,7 +181,7 @@ nav ul li a:hover {
     transition: .3s;
 }
 
-#loginButton:hover, #logoutButton:hover {
+#loginNow:hover, #loginButton:hover, #logoutButton:hover {
     background-color: #007bff;
     color: white;
     transition: .3s;

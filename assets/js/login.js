@@ -42,14 +42,12 @@ loginButton.addEventListener("click", function() {
 function loggedInCheck() {
     if (localStorage.getItem("LoggedIn") === "true") {
         logoutButton.classList.remove("hidden");
-        console.log("Logged in!");
         document.querySelector(".loginContainer").style.display = "none";
         document.querySelector(".loggedIn").classList.remove("hidden");
         document.getElementById("loggedInUser").innerText = localStorage.getItem("User");
     } else {
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
-        console.log("Not logged in!");
     }
 }
 

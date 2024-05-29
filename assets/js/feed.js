@@ -31,7 +31,6 @@ async function getData() {
             throw new Error("Could not fetch resource!");
         }
         const data = await res.json();
-        console.log('Success: ', data.data);
         for (let i = 0; i < data.data.length; i++) {
             displayPosts(data.data[i]);
         }
@@ -202,11 +201,9 @@ logoutButton.addEventListener("click", function() {
 function loggedInCheck() {
     if (localStorage.getItem("LoggedIn") === "true") {
         logoutButton.classList.remove("hidden");
-        console.log("Logged in!");
     } else {
         logoutButton.classList.add("hidden");
         loginButton.classList.remove("hidden");
-        console.log("Not logged in!");
     }
 }
 

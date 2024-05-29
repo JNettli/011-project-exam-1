@@ -148,12 +148,10 @@ function loggedInCheck() {
         newPostAnchor.style.display = "block";
         loginButton.classList.add("hidden");
         logoutButton.classList.remove("hidden");
-        console.log("Logged in!")
     } else {
         newPostAnchor.style.display = "none";
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
-        console.log("Not logged in!")
     }
 }
 

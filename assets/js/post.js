@@ -91,13 +91,11 @@ function loggedInCheck() {
         logoutButton.classList.remove("hidden");
         editButton.classList.remove("hidden");
         deleteButton.classList.remove("hidden");
-        console.log("Logged in!");
     } else {
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
         editButton.classList.add("hidden");
         deleteButton.classList.add("hidden");
-        console.log("Not logged in!");
     }
 }
 

@@ -8,6 +8,19 @@ const loginButton = document.getElementById("loginButton");
 const logoutButton = document.getElementById("logoutButton");
 let page = 1;
 const postsPerPage = 12;
+const burger = document.getElementById("burgerIcon");
+const closeButton = document.getElementById("closeButton");
+const burgerMenu = document.getElementById("burgerMenu");
+
+burger.addEventListener("click", function() {
+    burgerMenu.classList.remove("hidden");
+    closeButton.classList.remove("hidden");
+});
+
+closeButton.addEventListener("click", function() {
+    burgerMenu.classList.add("hidden");
+    closeButton.classList.add("hidden");
+});
 
 async function getData() {
     const skip = (page - 1) * postsPerPage;

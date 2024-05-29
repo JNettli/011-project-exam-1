@@ -6,6 +6,19 @@ const generalPost = `https://v2.api.noroff.dev/blog/posts/${authorNameLocalStora
 const saveButton = document.getElementById("overrideButton");
 const editButton = document.getElementById("editButton");
 const check = new URLSearchParams(window.location.search).get("id") === null;
+const burger = document.getElementById("burgerIcon");
+const closeButton = document.getElementById("closeButton");
+const burgerMenu = document.getElementById("burgerMenu");
+
+burger.addEventListener("click", function() {
+    burgerMenu.classList.remove("hidden");
+    closeButton.classList.remove("hidden");
+});
+
+closeButton.addEventListener("click", function() {
+    burgerMenu.classList.add("hidden");
+    closeButton.classList.add("hidden");
+});
 
 if (new URLSearchParams(window.location.search).get("id") === null) {
     document.title = "Create a New Post - The Bob Loblaw Law Blog";

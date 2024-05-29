@@ -3,10 +3,18 @@ const username = document.getElementById("username");
 const password = document.getElementById("password");
 const loginButton = document.getElementById("loginNow");
 const logoutButton = document.getElementById("logoutButton");
+const burger = document.getElementById("burgerIcon");
+const closeButton = document.getElementById("closeButton");
+const burgerMenu = document.getElementById("burgerMenu");
 
-logoutButton.addEventListener("click", function() {
-    localStorage.clear();
-    location.reload();
+burger.addEventListener("click", function() {
+    burgerMenu.classList.remove("hidden");
+    closeButton.classList.remove("hidden");
+});
+
+closeButton.addEventListener("click", function() {
+    burgerMenu.classList.add("hidden");
+    closeButton.classList.add("hidden");
 });
 
 loginButton.addEventListener("click", function() {

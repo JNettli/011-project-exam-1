@@ -4,10 +4,24 @@ const postText = document.querySelector(".postText");
 const postImage = document.querySelector(".postImage");
 const postButton = document.querySelector(".postButton");
 const newPostAnchor = document.querySelector(".newPostAnchor");
-const loginButton = document.getElementById("loginButtonLink");
+const loginButton = document.getElementById("loginButton");
+const logoutButton = document.getElementById("logoutButton");
 const deletePost = document.querySelector(".deletePost");
 const newest = document.getElementById("filterNewest");
 const oldest = document.getElementById("filterOldest");
+const burger = document.getElementById("burgerIcon");
+const closeButton = document.getElementById("closeButton");
+const burgerMenu = document.getElementById("burgerMenu");
+
+burger.addEventListener("click", function() {
+    burgerMenu.classList.remove("hidden");
+    closeButton.classList.remove("hidden");
+});
+
+closeButton.addEventListener("click", function() {
+    burgerMenu.classList.add("hidden");
+    closeButton.classList.add("hidden");
+});
 
 let allPostsData = [];
 
@@ -19,9 +33,6 @@ async function fetchAllPosts() {
         }
         const data = await res.json();
         allPostsData = data.data;
-        /*for (let i = 0; i < data.data.length; i++) {
-            displayPosts(data.data[i]);
-        }*/
         return data.data;
     } catch (error) {
         console.error('There was an error: ', error);
@@ -43,7 +54,7 @@ function displayPosts(post) {
 
     const postAuthor = document.createElement("div");
     postAuthor.classList.add("postAuthor");
-    postAuthor.innerText = `${post.author.name}, ${post.author.email}`;
+    postAuthor.innerText = `${post.author.name}`;
     
     const postDate = document.createElement("div");
     postDate.innerText = post.created;

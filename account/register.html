@@ -11,13 +11,37 @@
     <header>
         <nav>
             <a href="../index.html">
-                <img src="../assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw's Lawblog Logo" style="max-width: 260px; margin: -20px;">
+                <img src="../assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw's Lawblog Logo">
             </a>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../post/index.html">All Cases</a></li>
             </ul>
             <div class="loginOutDiv">
+                <button id="logoutButton" class="logoutNow hidden">Logout!</button>
+                <a href="../account/login.html" class="loginLink">
+                    <button id="loginButton" class="goToLogin hidden">Click Here to log in!</button>
+                </a>
+                <div id="closeButton" class="closeButton hidden">
+                    <img src="../assets/img/close.svg" alt="Close Icon">
+                </div>
+                <div id="burgerIcon">
+                    <img src="../assets/img/burgericon.svg" alt="Menu Icon" class="burgerIcon">
+                    <div id="burgerMenu" class="burgerMenu hidden">
+                        <div>
+                            <div class="topOfBurger">
+                                <img src="../assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw Logo">
+                            </div>
+                            <a href="/index.html" class="line">
+                                Home
+                            </a>
+                            <a href="/post/index.html" class="line">
+                                All Cases
+                            </a>
+                            <div id="loginNow" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>

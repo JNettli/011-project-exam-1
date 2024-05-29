@@ -358,4 +358,9 @@
     .reviewDiv p {
         font-size: .9rem;
     }
+
+    .carousel {
+        height: 250px;
+        width: 150px;
+    }
 }

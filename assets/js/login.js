@@ -39,15 +39,22 @@ loginButton.addEventListener("click", function() {
     });
 });
 
+logoutButton.addEventListener("click", function() {
+    localStorage.clear();
+    location.reload();
+});
+
 function loggedInCheck() {
     if (localStorage.getItem("LoggedIn") === "true") {
         logoutButton.classList.remove("hidden");
         document.querySelector(".loginContainer").style.display = "none";
         document.querySelector(".loggedIn").classList.remove("hidden");
         document.getElementById("loggedInUser").innerText = localStorage.getItem("User");
+        document.title = `Welcome, ${localStorage.getItem("authorName")}!`;
     } else {
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
+        document.title = "Login - The Bob Loblaw Law Blog";
     }
 }
 

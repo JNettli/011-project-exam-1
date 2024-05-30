@@ -130,8 +130,7 @@ nav a img {
     margin: 16px;
     border: 1px solid #696969;
     border-radius: 8px;
-    margin: 8px;
-    padding: 16px;
+    padding: 16px 16px 24px 16px;
     transition: .3s;
     text-decoration: none;
     color: black;

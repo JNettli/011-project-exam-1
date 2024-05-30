@@ -48,8 +48,8 @@
 }
 
 .upperDiv img {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 360px;
+    max-height: 360px;
     margin: 8px;
 }
 
@@ -111,4 +111,22 @@ form input[type="submit"] {
 #overrideButton:hover {
     background-color: #1b9a0b;
     transition: .3s;
+}
+
+@media screen and (max-width: 1200px) {
+    .upperDiv img {
+        max-width: 250px;
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .upperDiv {
+        float: none;
+        text-align: center;
+    }
+    .upperDiv img {
+        max-width: 200px;
+        max-height: 200px;
+    }
 }

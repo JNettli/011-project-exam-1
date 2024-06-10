@@ -1,3 +1,7 @@
+<div>
+  <img src="assets/img/bob-loblaw-logo.jpg" alt="Bob Loblaw Law Blog" />
+</div>
+
 # Bob Loblaw's Law Blog
 
 Lawyer Bob Loblaw from the offices of Bob Loblaw's blog where all cases he's completed is posted. A comprehensive list of all of Bob Loblaw's case history.
@@ -10,6 +14,12 @@ application. The client has asked for a responsive application that allows users
 dynamic blog posts. The client requires admin pages to register, login and manage their
 blog posts. During testing, you will use your own account that you create to act as the
 owner
+
+## Screenshot:
+<div>
+  <img src="assets/img/readme.png" alt="Bob Loblaw Law Blog preview image" />
+</div>
+
 ## Client:
 
 * Name: Offices of Bob Loblaw

@@ -28,11 +28,12 @@
 }
 
 .topDivs {
-    background-color: #9dbcff;
+    background-color: #dadada;
     padding: 48px 0;
 }
 
 .bottomDivs {
+    flex-direction: column;
     margin: 0 auto;
     box-shadow: #ccc 0 0 8px 0;
     padding-right: 128px;
@@ -71,12 +72,13 @@
 .mainHeader {
     font-size: 2.2rem;
     margin-right: 32px;
+    text-align: center;
 }
 
 .carousel {
     position: relative;
     height: 400px;
-    width: 300px;
+    width: 400px;
     margin: 0 auto;
 }
 
@@ -219,15 +221,19 @@
     border-radius: 50%;
 }
 
+.signed {
+    font-style: italic;
+}
+
 .sorting h1 {
     text-align: center;
 }
 
 .postDivPublic {
     width: 40%;
-    min-width: 600px;
+    min-width: 400px;
     height: fit-content;
-    min-height: 300px;
+    min-height: 200px;
     border: 1px solid #696969;
     border-radius: 8px;
     padding: 16px;
@@ -245,8 +251,8 @@
 }
 
 .postDivPublic .postImg {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 180px;
+    max-height: 180px;
     float: right;
     margin: 0 0 8px 8px;
 }
@@ -278,4 +284,83 @@
 #pagination button:hover {
     background-color: #0056b3;
     transition: .3s;
+}
+
+@media screen and (max-width: 1200px) {
+    .topDivs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .centerer h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .reviews {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .postDivPublic .postImg {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .postDivPublic {
+        min-width: 80%;
+        min-height: 100px;
+    }
+
+    .titleOfPost {
+        font-size: 1.3rem;
+    }
+
+    .postAuthor {
+        font-size: 1rem;
+    }
+
+    .postDate {
+        font-size: 1rem;
+    }
+
+    .topDivs .infoText {
+        margin: 8px;
+    }
+    
+    .topDivs .infoText h1 {
+        font-size: 2rem;
+    }
+
+    .topDivs .infoText p {
+        font-size: 1rem;
+    }
+
+    .bottomDivs h1 {
+        font-size: 2rem;
+    }
+
+    .centerer h1 {
+        font-size: 1.2rem;
+    }
+
+    .reviewDiv {
+        width: 80%;
+    }
+
+    .reviewDiv img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .reviewDiv p {
+        font-size: .9rem;
+    }
+
+    .carousel {
+        height: 250px;
+        width: 150px;
+    }
 }

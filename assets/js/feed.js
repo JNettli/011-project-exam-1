@@ -8,6 +8,19 @@ const loginButton = document.getElementById("loginButton");
 const logoutButton = document.getElementById("logoutButton");
 let page = 1;
 const postsPerPage = 12;
+const burger = document.getElementById("burgerIcon");
+const closeButton = document.getElementById("closeButton");
+const burgerMenu = document.getElementById("burgerMenu");
+
+burger.addEventListener("click", function() {
+    burgerMenu.classList.remove("hidden");
+    closeButton.classList.remove("hidden");
+});
+
+closeButton.addEventListener("click", function() {
+    burgerMenu.classList.add("hidden");
+    closeButton.classList.add("hidden");
+});
 
 async function getData() {
     const skip = (page - 1) * postsPerPage;
@@ -18,7 +31,6 @@ async function getData() {
             throw new Error("Could not fetch resource!");
         }
         const data = await res.json();
-        console.log('Success: ', data.data);
         for (let i = 0; i < data.data.length; i++) {
             displayPosts(data.data[i]);
         }
@@ -189,11 +201,9 @@ logoutButton.addEventListener("click", function() {
 function loggedInCheck() {
     if (localStorage.getItem("LoggedIn") === "true") {
         logoutButton.classList.remove("hidden");
-        console.log("Logged in!");
     } else {
         logoutButton.classList.add("hidden");
         loginButton.classList.remove("hidden");
-        console.log("Not logged in!");
     }
 }
 

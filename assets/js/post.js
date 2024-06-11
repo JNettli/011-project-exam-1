@@ -6,6 +6,19 @@ const postUrl = `https://v2.api.noroff.dev/blog/posts/${getAuthorName}/${getPost
 const content = document.getElementById("postContent");
 const editButton = document.getElementById("edit");
 const deleteButton = document.getElementById("delete");
+const burger = document.getElementById("burgerIcon");
+const closeButton = document.getElementById("closeButton");
+const burgerMenu = document.getElementById("burgerMenu");
+
+burger.addEventListener("click", function() {
+    burgerMenu.classList.remove("hidden");
+    closeButton.classList.remove("hidden");
+});
+
+closeButton.addEventListener("click", function() {
+    burgerMenu.classList.add("hidden");
+    closeButton.classList.add("hidden");
+});
 
 logoutButton.addEventListener("click", function() {
     localStorage.clear();
@@ -78,13 +91,11 @@ function loggedInCheck() {
         logoutButton.classList.remove("hidden");
         editButton.classList.remove("hidden");
         deleteButton.classList.remove("hidden");
-        console.log("Logged in!");
     } else {
         loginButton.classList.remove("hidden");
         logoutButton.classList.add("hidden");
         editButton.classList.add("hidden");
         deleteButton.classList.add("hidden");
-        console.log("Not logged in!");
     }
 }
 

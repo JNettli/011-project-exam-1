@@ -21,8 +21,13 @@ footer {
     min-height: 50px;
     width: 100%;
     padding: 32px;
-    border-top: 4px solid #007bff;
+    border-top: 4px solid #02020b;
     text-align: center;
+}
+
+footer img {
+    max-width: 260px;
+    margin: -20px;
 }
 
 .footerRight {
@@ -50,7 +55,7 @@ header {
     color: black;
     padding: 24px 0;
     text-align: center;
-    border-bottom: #9dbcff 4px solid;
+    border-bottom: #02020b 4px solid;
     background-color: #fff;
 }
 
@@ -84,6 +89,10 @@ nav ul li a:hover {
     transition: .3s;
 }
 
+nav a img {
+    width: 260px;
+}
+
 .show {
     display: block;
 }
@@ -98,6 +107,7 @@ nav ul li a:hover {
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+    max-width: 1200px;
 }
 
 #postTitle {
@@ -120,8 +130,7 @@ nav ul li a:hover {
     margin: 16px;
     border: 1px solid #696969;
     border-radius: 8px;
-    margin: 8px;
-    padding: 16px;
+    padding: 16px 16px 24px 16px;
     transition: .3s;
     text-decoration: none;
     color: black;
@@ -165,11 +174,7 @@ nav ul li a:hover {
     flex-direction: column;
 }
 
-.hidden {
-    display: none;
-}
-
-#loginNow, #loginButton, #logoutButton {
+#loginNow, .goToLogin, .logoutNow {
     background-color: transparent;
     color: black;
     padding: 8px;
@@ -181,8 +186,135 @@ nav ul li a:hover {
     transition: .3s;
 }
 
-#loginNow:hover, #loginButton:hover, #logoutButton:hover {
+#loginNow:hover, .goToLogin:hover, .logoutNow:hover {
     background-color: #007bff;
     color: white;
     transition: .3s;
+}
+
+.burgerIcon {
+    display: none;
+}
+
+.burgerIcon img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.burgerMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 4px solid #02020b;
+}
+
+.topOfBurger {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.burgerMenu img {
+    height: 81px;
+    width: 200px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+}
+
+#closeButton img {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+
+.line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    padding: 64px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-bottom: #02020b 2px solid;
+    color: black;
+    text-decoration: none;
+}
+
+.line:hover {
+    background-color: #007bff;
+}
+
+.lastItem {
+    border-top: #02020b 2px solid;
+}
+
+@media screen and (max-width: 1100px) {
+    footer div {
+        max-width: 200px;
+        font-size: .9rem;
+    }
+
+    footer img {
+        width: 200px;
+    }
+
+    footer .footerRight {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header img {
+        width: 200px;
+    }
+    
+    header nav ul {
+        display: none;
+    }
+
+    .logoutButton {
+        display: none;
+    }
+
+    header .loginLink {
+        display: none;
+    }
+
+    .burgerIcon {
+        height: 50px;
+        width: 50px;
+        display: block;
+        cursor: pointer;
+    }
+
+    .sorting h1 {
+        font-size: 1.5rem;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer img {
+        margin: -16px 0 16px 0;
+    }
+}
+
+.hidden {
+    display: none;
 }
